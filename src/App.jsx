@@ -18,7 +18,7 @@ export default function App() {
           <Route path="/jobs/:jobId" element={<JobDetail />} />
           {/* Jobs Board */}
           <Route path="/jobs" element={<JobsBoardNew />} />
-          // in your routes
+        
 <Route path="/assessments/:id" element={<AssessmentDetail />} />
 
           {/* Candidates */}
