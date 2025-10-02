@@ -16,8 +16,8 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import JobItem from "../../components/JobItem";
-import Pagination from "../../components/Pagination";
+import JobItem from "../../Components/JobItem"; 
+import Pagination from "../../Components/Pagination";
 import Toast from "../../Components/Toast";
 import {
   fetchJobs,
