@@ -7,9 +7,10 @@ import App from "./App";
 import "./index.css";
 import { makeServer } from "./mirage/server"; // ✅ keep this path
 
-if (import.meta.env.DEV) {
-  makeServer({ environment: "development" });
+if (import.meta.env.DEV || import.meta.env.VITE_USE_MIRAGE === "true") {
+  makeServer({ environment: import.meta.env.MODE });
 }
+
 
 const queryClient = new QueryClient();
 
