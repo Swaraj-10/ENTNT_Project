@@ -70,7 +70,12 @@ const seedJobs = [
   { id: "20", name: "Kavita Roy", email: "kavita.roy@example.com", stage: "tech", tags: ["Game Dev"], timeline: [{ at: new Date().toISOString(), stage: "tech", by: "System" }] },
 ];
 
-      seedCandidates.forEach((c) => server.create("candidate", c));
+            seedCandidates.forEach((c) =>
+        server.create("candidate", {
+          ...c,
+          timeline: [{ at: new Date().toISOString(), stage: c.stage, by: "System" }],
+        })
+      );
 
       // ---- One assessment per job (empty by default) ----
       server.create("assessment", {
@@ -209,6 +214,8 @@ const seedJobs = [
         const stage = request.queryParams.stage || "";
         const page = parseInt(request.queryParams.page || "1", 10);
         const pageSize = 20;
+        const totalPages = Math.max(1, Math.ceil(list.length / pageSize));
+        const start = (page - 1) * pageSize;
 
         if (search) {
           list = list.filter((c) =>
@@ -223,7 +230,7 @@ const seedJobs = [
         const start = (page - 1) * pageSize;
         const end = start + pageSize;
 
-        return { candidates: list.slice(start, end), totalPages };
+        return { candidates: list.slice(start, start + pageSize), totalPages };
       });
 
       // POST /candidates
