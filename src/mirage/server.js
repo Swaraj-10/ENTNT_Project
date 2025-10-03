@@ -214,8 +214,8 @@ const seedJobs = [
         const stage = request.queryParams.stage || "";
         const page = parseInt(request.queryParams.page || "1", 10);
         const pageSize = 20;
-        const totalPages = Math.max(1, Math.ceil(list.length / pageSize));
-        const start = (page - 1) * pageSize;
+       
+        
 
         if (search) {
           list = list.filter((c) =>
