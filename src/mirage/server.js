@@ -16,40 +16,60 @@ export function makeServer({ environment = "development" } = {}) {
 
     seeds(server) {
       // ---- Jobs with "order" for drag-reorder ----
-      const seedJobs = [
-        { id: "1", title: "Frontend Developer", slug: "frontend-dev", status: "active", tags: ["remote"], order: 1 },
-        { id: "2", title: "Backend Engineer", slug: "backend-eng", status: "active", tags: ["full-time"], order: 2 },
-        { id: "3", title: "Data Analyst", slug: "data-analyst", status: "archived", tags: ["onsite"], order: 3 },
-      ];
+const seedJobs = [
+  { id: "1", title: "Frontend Developer", slug: "frontend-dev", status: "active", tags: ["remote"], order: 1 },
+  { id: "2", title: "Backend Engineer", slug: "backend-eng", status: "active", tags: ["full-time"], order: 2 },
+  { id: "3", title: "Fullstack Engineer", slug: "fullstack-eng", status: "archived", tags: ["onsite"], order: 3 },
+  { id: "4", title: "Data Analyst", slug: "data-analyst", status: "active", tags: ["excel", "sql"], order: 4 },
+  { id: "5", title: "Data Scientist", slug: "data-scientist", status: "active", tags: ["ml", "python"], order: 5 },
+  { id: "6", title: "DevOps Engineer", slug: "devops-eng", status: "archived", tags: ["aws", "docker"], order: 6 },
+  { id: "7", title: "UI/UX Designer", slug: "uiux-designer", status: "active", tags: ["figma"], order: 7 },
+  { id: "8", title: "Product Manager", slug: "product-manager", status: "active", tags: ["roadmap"], order: 8 },
+  { id: "9", title: "QA Engineer", slug: "qa-engineer", status: "archived", tags: ["testing"], order: 9 },
+  { id: "10", title: "Mobile Developer", slug: "mobile-dev", status: "active", tags: ["ios", "android"], order: 10 },
+  { id: "11", title: "AI Engineer", slug: "ai-eng", status: "active", tags: ["ai", "ml"], order: 11 },
+  { id: "12", title: "Cloud Architect", slug: "cloud-architect", status: "archived", tags: ["cloud"], order: 12 },
+  { id: "13", title: "Database Admin", slug: "db-admin", status: "active", tags: ["db", "sql"], order: 13 },
+  { id: "14", title: "System Analyst", slug: "system-analyst", status: "active", tags: ["analysis"], order: 14 },
+  { id: "15", title: "Business Analyst", slug: "business-analyst", status: "archived", tags: ["finance"], order: 15 },
+  { id: "16", title: "HR Specialist", slug: "hr-specialist", status: "active", tags: ["hr"], order: 16 },
+  { id: "17", title: "Marketing Manager", slug: "marketing-manager", status: "active", tags: ["seo"], order: 17 },
+  { id: "18", title: "SEO Specialist", slug: "seo-specialist", status: "archived", tags: ["seo"], order: 18 },
+  { id: "19", title: "Support Engineer", slug: "support-eng", status: "active", tags: ["support"], order: 19 },
+  { id: "20", title: "Network Engineer", slug: "network-eng", status: "active", tags: ["network"], order: 20 },
+  { id: "21", title: "Security Specialist", slug: "security-specialist", status: "archived", tags: ["cybersecurity"], order: 21 },
+  { id: "22", title: "Embedded Engineer", slug: "embedded-eng", status: "active", tags: ["iot"], order: 22 },
+  { id: "23", title: "Game Developer", slug: "game-dev", status: "active", tags: ["unity", "gaming"], order: 23 },
+  { id: "24", title: "Project Coordinator", slug: "project-coordinator", status: "archived", tags: ["coordination"], order: 24 },
+  { id: "25", title: "Technical Writer", slug: "tech-writer", status: "active", tags: ["docs"], order: 25 },
+];
+
       seedJobs.forEach((j) => server.create("job", j));
 
       // ---- Candidates with stages + timeline ----
       const seedCandidates = [
-        {
-          id: "1",
-          name: "Alice Johnson",
-          email: "alice@example.com",
-          stage: "applied",
-          tags: ["React", "UI"],
-          timeline: [{ at: new Date().toISOString(), stage: "applied", by: "System" }],
-        },
-        {
-          id: "2",
-          name: "Bob Smith",
-          email: "bob@example.com",
-          stage: "tech",
-          tags: ["Node", "API"],
-          timeline: [{ at: new Date().toISOString(), stage: "tech", by: "System" }],
-        },
-        {
-          id: "3",
-          name: "Charlie Brown",
-          email: "charlie@example.com",
-          stage: "screen",
-          tags: ["SQL", "Excel"],
-          timeline: [{ at: new Date().toISOString(), stage: "screen", by: "System" }],
-        },
-      ];
+  { id: "1", name: "Rohit Sharma", email: "rohit.sharma@example.com", stage: "applied", tags: ["React", "JS"], timeline: [{ at: new Date().toISOString(), stage: "applied", by: "System" }] },
+  { id: "2", name: "Anita Verma", email: "anita.verma@example.com", stage: "screen", tags: ["Python", "SQL"], timeline: [{ at: new Date().toISOString(), stage: "screen", by: "System" }] },
+  { id: "3", name: "Rahul Khanna", email: "rahul.khanna@example.com", stage: "interview", tags: ["AWS"], timeline: [{ at: new Date().toISOString(), stage: "interview", by: "System" }] },
+  { id: "4", name: "Priya Reddy", email: "priya.reddy@example.com", stage: "offer", tags: ["UI/UX"], timeline: [{ at: new Date().toISOString(), stage: "offer", by: "System" }] },
+  { id: "5", name: "Suresh Iyer", email: "suresh.iyer@example.com", stage: "rejected", tags: ["C++"], timeline: [{ at: new Date().toISOString(), stage: "rejected", by: "System" }] },
+  { id: "6", name: "Neha Gupta", email: "neha.gupta@example.com", stage: "applied", tags: ["Java"], timeline: [{ at: new Date().toISOString(), stage: "applied", by: "System" }] },
+  { id: "7", name: "Vikram Singh", email: "vikram.singh@example.com", stage: "tech", tags: ["Node"], timeline: [{ at: new Date().toISOString(), stage: "tech", by: "System" }] },
+  { id: "8", name: "Simran Kaur", email: "simran.kaur@example.com", stage: "screen", tags: ["HTML", "CSS"], timeline: [{ at: new Date().toISOString(), stage: "screen", by: "System" }] },
+  { id: "9", name: "Arjun Mehta", email: "arjun.mehta@example.com", stage: "interview", tags: ["React", "Next.js"], timeline: [{ at: new Date().toISOString(), stage: "interview", by: "System" }] },
+  { id: "10", name: "Pooja Das", email: "pooja.das@example.com", stage: "offer", tags: ["Marketing"], timeline: [{ at: new Date().toISOString(), stage: "offer", by: "System" }] },
+  { id: "11", name: "Amit Roy", email: "amit.roy@example.com", stage: "applied", tags: ["SQL", "Excel"], timeline: [{ at: new Date().toISOString(), stage: "applied", by: "System" }] },
+  { id: "12", name: "Sneha Nair", email: "sneha.nair@example.com", stage: "screen", tags: ["Java", "Spring"], timeline: [{ at: new Date().toISOString(), stage: "screen", by: "System" }] },
+  { id: "13", name: "Karan Patel", email: "karan.patel@example.com", stage: "rejected", tags: ["DevOps"], timeline: [{ at: new Date().toISOString(), stage: "rejected", by: "System" }] },
+  { id: "14", name: "Divya Kapoor", email: "divya.kapoor@example.com", stage: "tech", tags: ["AI", "ML"], timeline: [{ at: new Date().toISOString(), stage: "tech", by: "System" }] },
+  { id: "15", name: "Sanjay Yadav", email: "sanjay.yadav@example.com", stage: "applied", tags: ["Networking"], timeline: [{ at: new Date().toISOString(), stage: "applied", by: "System" }] },
+  { id: "16", name: "Meena Saxena", email: "meena.saxena@example.com", stage: "offer", tags: ["HR"], timeline: [{ at: new Date().toISOString(), stage: "offer", by: "System" }] },
+  { id: "17", name: "Nikhil Bansal", email: "nikhil.bansal@example.com", stage: "screen", tags: ["C#", ".NET"], timeline: [{ at: new Date().toISOString(), stage: "screen", by: "System" }] },
+  { id: "18", name: "Anjali Chopra", email: "anjali.chopra@example.com", stage: "interview", tags: ["Cloud"], timeline: [{ at: new Date().toISOString(), stage: "interview", by: "System" }] },
+  { id: "19", name: "Manoj Das", email: "manoj.das@example.com", stage: "rejected", tags: ["Support"], timeline: [{ at: new Date().toISOString(), stage: "rejected", by: "System" }] },
+  { id: "20", name: "Kavita Roy", email: "kavita.roy@example.com", stage: "tech", tags: ["Game Dev"], timeline: [{ at: new Date().toISOString(), stage: "tech", by: "System" }] },
+];
+
       seedCandidates.forEach((c) => server.create("candidate", c));
 
       // ---- One assessment per job (empty by default) ----
