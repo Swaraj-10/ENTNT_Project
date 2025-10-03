@@ -20,9 +20,9 @@ export async function fetchCandidates({ search = "", stage = "", page = 1 } = {}
 }
 
 export async function fetchCandidateById(id) {
-  const res = await fetch(`${API_URL}/${id}`);
-  if (!res.ok) throw new Error("Failed to fetch candidate");
-  return res.json();
+  const res = await fetch(`${API_URL}?id=${id}`);
+  const data = await parse(res);
+  return (data.candidates || []).find((c) => c.id === id) || null;
 }
 
 export async function createCandidate(candidate) {
